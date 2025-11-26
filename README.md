@@ -44,8 +44,8 @@ This project includes:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/polykalshi-arbitrage-bot.git
-cd polykalshi-arbitrage-bot
+git clone https://github.com/CarlosIbCu/polymarket-kalshi-btc-arbitrage-bot.git
+cd polymarket-kalshi-btc-arbitrage-bot
 ```
 
 ### 2. Setup Backend

@@ -29,7 +29,7 @@ This section guides you through submitting an enhancement suggestion, including 
 
 1.  **Clone the repo**:
     ```bash
-    git clone https://github.com/yourusername/polymarket-kalshi-btc-arbitrage-bot.git
+    git clone https://github.com/CarlosIbCu/polymarket-kalshi-btc-arbitrage-bot.git
     ```
 
 2.  **Backend Setup**:
