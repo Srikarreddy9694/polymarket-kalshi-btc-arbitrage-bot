@@ -9,14 +9,14 @@ Both Polymarket and Kalshi trade **binary options**. These are contracts that pa
 Because the payout is fixed at $1.00, the price of a contract (e.g., $0.60) represents the market's implied probability of the event occurring (60%).
 
 ### Polymarket Structure
--   **Up**: Pays $1 if Price $\ge$ Strike.
--   **Down**: Pays $1 if Price $<$ Strike.
--   **Relation**: Cost(Up) + Cost(Down) $\approx$ $1.00 (ignoring fees/spread).
+-   **Up**: Pays $1 if Price ≥ Strike.
+-   **Down**: Pays $1 if Price < Strike.
+-   **Relation**: Cost(Up) + Cost(Down) ≈ $1.00 (ignoring fees/spread).
 
 ### Kalshi Structure
--   **Yes**: Pays $1 if Price $\ge$ Strike.
--   **No**: Pays $1 if Price $<$ Strike.
--   **Relation**: Cost(Yes) + Cost(No) $\approx$ $1.00.
+-   **Yes**: Pays $1 if Price ≥ Strike.
+-   **No**: Pays $1 if Price < Strike.
+-   **Relation**: Cost(Yes) + Cost(No) ≈ $1.00.
 
 ## 2. The Arbitrage Opportunity
 
@@ -36,14 +36,14 @@ We compare the **Strike Prices** of the two markets to find overlapping coverage
 
 We buy:
 1.  **Polymarket DOWN** (Wins if Price < \$90,000)
-2.  **Kalshi YES** (Wins if Price $\ge$ \$89,000)
+2.  **Kalshi YES** (Wins if Price ≥ \$89,000)
 
 **Outcome Analysis:**
 -   **Price < \$89,000**:
     -   Poly Down: **WINS** ($1.00)
     -   Kalshi Yes: LOSES ($0.00)
     -   **Total Payout: $1.00**
--   **Price $\ge$ \$90,000**:
+-   **Price ≥ \$90,000**:
     -   Poly Down: LOSES ($0.00)
     -   Kalshi Yes: **WINS** ($1.00)
     -   **Total Payout: $1.00**
@@ -60,7 +60,7 @@ We buy:
 *Example: Poly Strike = \$89,000 | Kalshi Strike = \$90,000*
 
 We buy:
-1.  **Polymarket UP** (Wins if Price $\ge$ \$89,000)
+1.  **Polymarket UP** (Wins if Price ≥ \$89,000)
 2.  **Kalshi NO** (Wins if Price < \$90,000)
 
 **Outcome Analysis:**
@@ -68,7 +68,7 @@ We buy:
     -   Poly Up: LOSES ($0.00)
     -   Kalshi No: **WINS** ($1.00)
     -   **Total Payout: $1.00**
--   **Price $\ge$ \$90,000**:
+-   **Price ≥ \$90,000**:
     -   Poly Up: **WINS** ($1.00)
     -   Kalshi No: LOSES ($0.00)
     -   **Total Payout: $1.00**
