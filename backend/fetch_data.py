@@ -1,4 +1,5 @@
 import requests
+import json
 import time
 import datetime
 
@@ -28,8 +29,8 @@ def get_polymarket_data():
             return None, "Markets not found in event"
             
         market = markets[0]
-        outcomes = eval(market.get("outcomes", "[]"))
-        outcome_prices = eval(market.get("outcomePrices", "[]"))
+        outcomes = json.loads(market.get("outcomes", "[]"))
+        outcome_prices = json.loads(market.get("outcomePrices", "[]"))
         
         prices = {}
         for outcome, price in zip(outcomes, outcome_prices):

@@ -1,0 +1,63 @@
+# ============================================================
+# Arbitrage Bot — Docker Compose (Backend + Frontend)
+# ============================================================
+# Usage:
+#   docker compose up -d          # Start all services
+#   docker compose logs -f bot    # Tail bot logs
+#   docker compose down           # Stop everything
+# ============================================================
+
+services:
+  # ── Backend API ──────────────────────────────────────────
+  bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: arb-bot
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - bot-data:/app/data # SQLite persistence
+      - ./backend/.env:/app/.env:ro # Config (read-only)
+    environment:
+      - DRY_RUN=${DRY_RUN:-True}
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - DB_PATH=/app/data/arbitrage_bot.db
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - arb-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ── Frontend Dashboard ───────────────────────────────────
+  dashboard:
+    image: nginx:alpine
+    container_name: arb-dashboard
+    restart: unless-stopped
+    ports:
+      - "${DASHBOARD_PORT:-3000}:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      bot:
+        condition: service_healthy
+    networks:
+      - arb-net
+
+volumes:
+  bot-data:
+    driver: local
+
+networks:
+  arb-net:
+    driver: bridge

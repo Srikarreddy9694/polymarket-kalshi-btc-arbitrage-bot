@@ -1,4 +1,5 @@
 import requests
+import json
 import time
 import datetime
 import pytz
@@ -56,8 +57,8 @@ def get_polymarket_data(slug):
         
         # Get Token IDs
         # clobTokenIds is a list of strings
-        clob_token_ids = eval(market.get("clobTokenIds", "[]"))
-        outcomes = eval(market.get("outcomes", "[]"))
+        clob_token_ids = json.loads(market.get("clobTokenIds", "[]"))
+        outcomes = json.loads(market.get("outcomes", "[]"))
         
         if len(clob_token_ids) != 2:
             return None, "Unexpected number of tokens"
